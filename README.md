@@ -1,7 +1,8 @@
 # ESP32 Remote uart tool
 This fork (from https://github.com/yuri-rage/ESP-Serial-Bridge) adds an LCD display (i2c, 20x4) to show some useful information, such as address, baudrates, etc.
-
 The LCD fork has NOT been tested with ESP8266, the rest of the code is compatible with both the ESP32 and ESP8266.
+
+This fork also adds compatibility with Platformio both physical and OTA upload,  to run under Arduino IDE simply rename the file main.cpp to main.ino
 
 Because the ESP8266 has some idiosyncrasies with its hardware serial ports, I used SoftwareSerial to implement the ESP8266 bridge.  It is limited to ~115200 baud and will likely prove less reliable than an ESP32. `BLUETOOTH` (hardware limitation) and `PROTOCOL_UDP` (software limitation) are not available on the ESP8266.
 
