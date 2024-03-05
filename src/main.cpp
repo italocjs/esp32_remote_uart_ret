@@ -4,6 +4,7 @@
  * Simple WiFi Serial Bridge for Espressif microcontrollers
  *
  * Forked from https://github.com/AlphaLima/ESP32-Serial-Bridge
+ * Forked from https://github.com/yuri-rage/ESP-Serial-Bridge
  *
  * Added compatibility for ESP8266, WiFi reconnect on failure, and mDNS
  *discovery.

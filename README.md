@@ -1,5 +1,5 @@
 # ESP32 Remote uart tool
-This fork adds an LCD display (i2c, 20x4) to show some useful information, such as address, baudrates, etc.
+This fork (from https://github.com/yuri-rage/ESP-Serial-Bridge) adds an LCD display (i2c, 20x4) to show some useful information, such as address, baudrates, etc.
 
 The LCD fork has NOT been tested with ESP8266, the rest of the code is compatible with both the ESP32 and ESP8266.
 
