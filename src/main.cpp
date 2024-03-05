@@ -171,24 +171,26 @@ void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info)
     void screen_1()
     {
         lcd.clear();
-
-        wl_status_t status = WiFi.status();
-        bool _isconnected = (status == WL_CONNECTED);
-
         lcd.setCursor(0, 0);
-        lcd.println("OTA PORT: 55910");
-        lcd.setCursor(0, 1);
-        lcd.printf("FW Date: %s", __DATE__);
-        lcd.setCursor(0, 2);
-        
-        bool _bat_saving = 0;
-        #ifdef BATTERY_SAVER
-        _bat_saving = 1;
-        #endif
-        lcd.printf("Bat saver: %s", _bat_saving ? "ON" : "OFF");
-        
-    }
+#ifdef OTA_HANDLER
+        lcd.printf("OTA PORT: 55910");
+#else
+    lcd.printf("OTA: OFF");
+#endif
 
+        lcd.setCursor(0, 1);
+        lcd.printf("FW Date: %s\n", __DATE__);
+
+        lcd.setCursor(0, 2);
+#ifdef BATTERY_SAVER
+        lcd.printf("Bat saver: ON");
+#else
+    lcd.printf("Bat saver: OFF");
+#endif
+
+        lcd.setCursor(0, 3);
+        lcd.printf("Max clients: %d", MAX_NMEA_CLIENTS);
+    }
 
     void screen_2()
     {
@@ -290,7 +292,7 @@ void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info)
             _first_run = false;
             _last_tracker = millis();
             _current_screen++;
-            if (_current_screen > 4)
+            if (_current_screen > 5)
             {
                 _current_screen = 0;
             }
@@ -310,6 +312,9 @@ void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info)
                 break;
             case 4:
                 screen_4();
+                break;
+            case 5:
+                screen_5();
                 break;
             }
         }
@@ -578,6 +583,4 @@ void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info)
                 }
             }
         }
-
-
     }
